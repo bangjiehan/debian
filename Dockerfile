@@ -1,6 +1,10 @@
 FROM debian:trixie
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && \
+    apt-get install -y tasksel && \
+    tasksel install standard && \
     apt-get install -y supervisor openssh-server && \
     rm -rf /var/lib/apt/lists/*
 
