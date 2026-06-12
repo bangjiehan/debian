@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y tasksel && \
     tasksel install standard && \
-    apt-get install -y supervisor openssh-server curl && \
+    apt-get install -y supervisor openssh-server build-essential curl && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/sshd /root/.ssh && \
