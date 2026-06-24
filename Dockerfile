@@ -8,11 +8,13 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y tasksel && \
     tasksel install standard && \
+    apt-get install -y supervisor openssh-server build-essential numactl curl && \
     wget https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64/cuda-keyring_1.1-1_all.deb && \
     dpkg -i cuda-keyring_1.1-1_all.deb && rm cuda-keyring_1.1-1_all.deb && \
     apt-get update && \
-    apt-get install -y supervisor openssh-server build-essential cuda-toolkit-13-3 numactl curl && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y cuda-toolkit-13-3 && \
+    rm -rf /var/lib/apt/lists/* && \
+    echo 'export PATH=/usr/local/cuda-13.3/bin${PATH:+:${PATH}}' >> "$HOME/.bashrc"
 
 RUN mkdir -p /run/sshd /root/.ssh && \
     chmod 700 /root/.ssh && \
