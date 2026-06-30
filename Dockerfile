@@ -26,7 +26,7 @@ ENV UV_PYTHON=3.13 \
     UV_MANAGED_PYTHON=true \
     UV_TORCH_BACKEND=cu130
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    . $HOME/.local/bin/env && \
+    . "$HOME/.local/bin/env" && \
     uv python install && \
     mkdir vllm && cd vllm && \
     uv venv && \
@@ -38,4 +38,4 @@ COPY --chmod=600 authorized_keys /root/.ssh/authorized_keys
 
 EXPOSE 22
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-n"]
