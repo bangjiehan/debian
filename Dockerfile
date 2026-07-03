@@ -9,7 +9,7 @@ RUN apt-get update && \
     apt-get install -y tasksel && \
     tasksel install standard && \
     apt-get install -y supervisor openssh-server build-essential numactl curl && \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64/cuda-keyring_1.1-1_all.deb && \
+    wget -nv https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64/cuda-keyring_1.1-1_all.deb && \
     dpkg -i cuda-keyring_1.1-1_all.deb && rm cuda-keyring_1.1-1_all.deb && \
     apt-get update && \
     apt-get install -y cuda-toolkit-13-3 && \
@@ -31,7 +31,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
     mkdir vllm && cd vllm && \
     uv venv && \
     . .venv/bin/activate && \
-    uv pip install vllm[bench] fastokens
+    uv pip install vllm[bench] fastokens 'datasets>=5.0.0'
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --chmod=600 authorized_keys /root/.ssh/authorized_keys
