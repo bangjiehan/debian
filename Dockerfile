@@ -31,7 +31,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
     mkdir vllm && cd vllm && \
     uv venv && \
     . .venv/bin/activate && \
-    uv pip install vllm[bench] fastokens 'datasets>=5.0.0'
+    uv pip install vllm[bench] fastokens orjson 'datasets>=5.0.0'
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY --chmod=600 authorized_keys /root/.ssh/authorized_keys
