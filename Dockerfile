@@ -8,7 +8,7 @@ RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y tasksel && \
     tasksel install standard && \
-    apt-get install -y supervisor openssh-server build-essential numactl curl && \
+    apt-get install -y supervisor openssh-server build-essential numactl ffmpeg curl && \
     wget -nv https://developer.download.nvidia.com/compute/cuda/repos/debian13/x86_64/cuda-keyring_1.1-1_all.deb && \
     dpkg -i cuda-keyring_1.1-1_all.deb && rm cuda-keyring_1.1-1_all.deb && \
     apt-get update && \
